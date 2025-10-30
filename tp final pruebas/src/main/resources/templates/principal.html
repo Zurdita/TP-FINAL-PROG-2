@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="fragments/layout :: layout('Inicio', ~{::section})">
+<section>
+  <div class="card">
+    <h2>Menú principal</h2>
+    <p>Usa la navegación para gestionar concesionarias, stock e informes.</p>
+    <div class="row">
+      <a class="btn" href="/concesionarias/consultar">Ver Concesionarias</a>
+      <a class="btn" href="/concesionarias/nuevo">Nueva Concesionaria</a>
+      <a class="btn" href="/concesionarias/informe">Ver Informe</a>
+    </div>
+  </div>
+</section>
+</html>

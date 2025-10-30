@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="layout(title, content)">
+<head>
+  <meta charset="UTF-8"/>
+  <title th:text="${title}">App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    header { margin-bottom: 20px; }
+    nav a { margin-right: 12px; text-decoration:none; }
+    table { width:100%; border-collapse: collapse; margin-top: 10px;}
+    th, td { border:1px solid #ddd; padding:8px; }
+    th { background:#f5f5f5; text-align:left; }
+    .btn { display:inline-block; padding:6px 10px; background:#1976d2; color:white; border-radius:4px; }
+    .btn-outline { background:white; color:#1976d2; border:1px solid #1976d2; }
+    .row { display:flex; gap:16px; align-items: center; flex-wrap: wrap; }
+    .card { border:1px solid #ddd; border-radius:8px; padding:16px; margin-top:10px; }
+    input, select { padding:6px; }
+    label { display:block; margin-top:8px; }
+  </style>
+</head>
+<body>
+<header>
+  <h1>TP Final – Programación II</h1>
+  <nav>
+    <a href="/" class="btn-outline">Inicio</a>
+    <a href="/concesionarias/consultar" class="btn-outline">Concesionarias</a>
+    <a href="/concesionarias/nuevo" class="btn-outline">Nueva Concesionaria</a>
+    <a href="/concesionarias/informe" class="btn-outline">Informe</a>
+  </nav>
+</header>
+
+<main th:insert="${content}"></main>
+</body>
+</html>

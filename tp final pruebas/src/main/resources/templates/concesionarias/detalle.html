@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="fragments/layout :: layout('Detalle Concesionaria', ~{::section})">
+<section>
+  <h2 th:text="'Concesionaria: ' + ${concesionaria.nombre}">Concesionaria</h2>
+  <p><b>Domicilio:</b> <span th:text="${concesionaria.domicilio}">dom</span></p>
+  <p><b>Contacto:</b>
+    <span th:text="${concesionaria.contacto != null ? concesionaria.contacto.telefono : '-'}">tel</span> /
+    <span th:text="${concesionaria.contacto != null ? concesionaria.contacto.email : '-'}">email</span>
+  </p>
+
+  <div class="row">
+    <a class="btn" th:href="@{|/concesionarias/${concesionaria.id}/rodados/nuevo|}">Agregar Rodado</a>
+    <a class="btn btn-outline" href="/concesionarias/consultar">Volver</a>
+  </div>
+
+  <div class="card">
+    <h3>Stock</h3>
+    <table>
+      <thead>
+      <tr>
+        <th>Tipo</th><th>Marca</th><th>Modelo</th><th>Año</th><th>Extra</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="r : ${concesionaria.stock}">
+        <td th:text="${r.getClass().getSimpleName()}">Auto</td>
+        <td th:text="${r.marca}">Marca</td>
+        <td th:text="${r.modelo}">Modelo</td>
+        <td th:text="${r.anio}">2022</td>
+        <td>
+          <span th:if="${r.getClass().getSimpleName().equals('Auto')}" th:text="'Puertas: ' + ${r.puertas}">Puertas</span>
+          <span th:if="${r.getClass().getSimpleName().equals('Camioneta')}" th:text="'4x4: ' + ${r.traccion4x4}">Tracción</span>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+</html>

@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="fragments/layout :: layout('Informe', ~{::section})">
+<section>
+  <h2>Informe general</h2>
+  <div class="card">
+    <p><b>Autos:</b> <span th:text="${informe.autos}">0</span></p>
+    <p><b>Camionetas:</b> <span th:text="${informe.camionetas}">0</span></p>
+  </div>
+</section>
+</html>

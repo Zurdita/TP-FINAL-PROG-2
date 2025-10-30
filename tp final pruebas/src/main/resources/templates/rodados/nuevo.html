@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="fragments/layout :: layout('Nuevo Rodado', ~{::section})">
+<section>
+  <h2 th:text="'Agregar Rodado a ' + ${concesionaria.nombre}">Nuevo Rodado</h2>
+  <form th:action="@{|/concesionarias/${concesionaria.id}/rodados|}" method="post" class="card">
+    <label>Tipo
+      <select name="tipo" required>
+        <option value="AUTO">AUTO</option>
+        <option value="CAMIONETA">CAMIONETA</option>
+      </select>
+    </label>
+
+    <div class="row">
+      <label>Marca <input type="text" name="marca" required></label>
+      <label>Modelo <input type="text" name="modelo" required></label>
+      <label>Año <input type="number" name="anio" required></label>
+    </div>
+
+    <div class="row">
+      <label>Puertas (solo AUTO) <input type="number" name="puertas" min="2" max="6"></label>
+      <label>Tracción 4x4 (solo CAMIONETA)
+        <select name="traccion4x4">
+          <option value="false">No</option>
+          <option value="true">Sí</option>
+        </select>
+      </label>
+    </div>
+
+    <button class="btn" type="submit">Agregar</button>
+    <a class="btn btn-outline" th:href="@{|/concesionarias/${concesionaria.id}|}">Volver</a>
+  </form>
+</section>
+</html>

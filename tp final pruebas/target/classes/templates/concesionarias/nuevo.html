@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="fragments/layout :: layout('Nueva Concesionaria', ~{::section})">
+<section>
+  <h2>Nueva Concesionaria</h2>
+  <form method="post" action="/concesionarias" class="card">
+    <label>Nombre <input type="text" name="nombre" required></label>
+    <label>Domicilio <input type="text" name="domicilio" required></label>
+    <div class="row">
+      <label>Teléfono <input type="text" name="telefono"></label>
+      <label>Email <input type="email" name="email"></label>
+    </div>
+    <button class="btn" type="submit">Guardar</button>
+  </form>
+</section>
+</html>

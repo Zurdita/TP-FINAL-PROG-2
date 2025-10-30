@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="fragments/layout :: layout('Concesionarias', ~{::section})">
+<section>
+  <h2>Concesionarias</h2>
+
+  <form method="get" action="/concesionarias/buscar" class="row">
+    <label>Domicilio
+      <input type="text" name="domicilio" th:value="${domicilio}">
+    </label>
+    <button class="btn" type="submit">Buscar</button>
+    <a class="btn btn-outline" href="/concesionarias/consultar">Limpiar</a>
+  </form>
+
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th><th>Nombre</th><th>Domicilio</th><th>Teléfono</th><th>Email</th><th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="c : ${concesionarias}">
+      <td th:text="${c.id}">1</td>
+      <td th:text="${c.nombre}">Nombre</td>
+      <td th:text="${c.domicilio}">Domicilio</td>
+      <td th:text="${c.contacto != null ? c.contacto.telefono : ''}">Tel</td>
+      <td th:text="${c.contacto != null ? c.contacto.email : ''}">Email</td>
+      <td>
+        <a th:href="@{|/concesionarias/${c.id}|}" class="btn">Detalle</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</section>
+</html>
